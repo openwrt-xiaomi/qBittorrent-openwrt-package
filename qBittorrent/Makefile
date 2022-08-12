@@ -92,6 +92,11 @@ endef
 define Package/qbittorrent/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/qbittorrent-nox $(1)/usr/bin
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/qbittorrent $(1)/etc/init.d
+	$(INSTALL_DIR) $(1)/root/.config/qBittorrent
+	$(CP) ./files/qBittorrent.conf $(1)/root/.config/qBittorrent
+	$(INSTALL_DIR) $(1)/root/Downloads
 	$(INSTALL_DIR) $(1)/etc/qBittorrent
 	$(INSTALL_DATA) ./files/ipfilter.dat $(1)/etc/qBittorrent/ipfilter.dat
 endef
